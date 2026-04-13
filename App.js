@@ -14,6 +14,7 @@ const ALIASES = {
   l: 'com.lyft.android.driver',
   m: 'com.google.android.apps.maps',
   g: 'com.google.android.apps.googleassistant',
+  test: 'com.google.android.youtube',
 };
 
 const FRICTION_PREFIX = 'make your life hell and open ';
@@ -24,9 +25,7 @@ function launchApp(packageName, addLog) {
   IntentLauncher.startActivityAsync('android.intent.action.MAIN', {
     packageName,
     flags: 268435456,
-  }).catch(err => {
-    addLog(`ERR: ${err.message}`);
-  });
+  }).catch(err => addLog(`ERR: ${err.message}`));
 }
 
 export default function App() {
