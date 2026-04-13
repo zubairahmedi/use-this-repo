@@ -102,13 +102,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     padding: 12,
   },
   logContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: 8,
+    justifyContent: 'center',
+    marginBottom: 16,
   },
   logText: {
     color: '#00ff00',
