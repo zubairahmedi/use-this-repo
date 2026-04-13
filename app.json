@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "vengeful-yellow-waffle",
+    "slug": "snack-eaedd370-82b3-44ae-9c95-2dc2460346b1",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.zehaankhanafgha.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cda0085f-7a48-49f8-83e7-38b4d1cb18d6"
+      }
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
