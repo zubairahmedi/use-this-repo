@@ -6,8 +6,8 @@ import {
   TextInput,
   StatusBar,
   ToastAndroid,
-  Linking,
 } from 'react-native';
+import * as IntentLauncher from 'expo-intent-launcher';
 
 const ALIASES = {
   u: 'com.ubercab.driver',
@@ -21,8 +21,10 @@ const FRICTION_SUFFIX = ' and waste your time you will never grow up';
 
 function launchApp(packageName, addLog) {
   addLog(`opening ${packageName}...`);
-  const url = `intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${packageName};end`;
-  Linking.openURL(url).catch(err => {
+  IntentLauncher.startActivityAsync('android.intent.action.MAIN', {
+    packageName,
+    flags: 268435456,
+  }).catch(err => {
     addLog(`ERR: ${err.message}`);
   });
 }
