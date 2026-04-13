@@ -22,7 +22,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "permissions": ["QUERY_ALL_PACKAGES"],
+      "permissions": ["android.permission.QUERY_ALL_PACKAGES"],
       "intentFilters": [
         {
           "action": "android.intent.action.MAIN",

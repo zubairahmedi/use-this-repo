@@ -21,7 +21,7 @@ const FRICTION_SUFFIX = ' and waste your time you will never grow up';
 
 function launchApp(packageName, addLog) {
   addLog(`opening ${packageName}...`);
-  const url = `intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${packageName};end`;
+  const url = `intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${packageName};end`;
   Linking.openURL(url).catch(err => {
     addLog(`ERR: ${err.message}`);
   });
