@@ -6,9 +6,8 @@ import {
   TextInput,
   StatusBar,
   ToastAndroid,
-  NativeModules,
+  Linking,
 } from 'react-native';
-import * as IntentLauncher from 'expo-intent-launcher';
 
 const ALIASES = {
   u: 'com.ubercab.driver',
@@ -20,12 +19,11 @@ const ALIASES = {
 const FRICTION_PREFIX = 'make your life hell and open ';
 const FRICTION_SUFFIX = ' and waste your time you will never grow up';
 
-function launchApp(packageName) {
-  IntentLauncher.startActivityAsync('android.intent.action.MAIN', {
-    packageName: packageName,
-    flags: 0x10200000, // FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
-  }).catch(() => {
-    ToastAndroid.show(`Cannot open: ${packageName}`, ToastAndroid.SHORT);
+function launchApp(packageName, addLog) {
+  addLog(`opening ${packageName}...`);
+  const url = `intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${packageName};end`;
+  Linking.openURL(url).catch(err => {
+    addLog(`ERR: ${err.message}`);
   });
 }
 
@@ -48,7 +46,7 @@ export default function App() {
     // Fast-track aliases
     if (ALIASES[cmd]) {
       addLog(`launching ${cmd}...`);
-      launchApp(ALIASES[cmd]);
+      launchApp(ALIASES[cmd], addLog);
       return;
     }
 
