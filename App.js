@@ -6,8 +6,9 @@ import {
   TextInput,
   StatusBar,
   ToastAndroid,
-  Linking,
+  NativeModules,
 } from 'react-native';
+import * as IntentLauncher from 'expo-intent-launcher';
 
 const ALIASES = {
   u: 'com.ubercab.driver',
@@ -20,9 +21,11 @@ const FRICTION_PREFIX = 'make your life hell and open ';
 const FRICTION_SUFFIX = ' and waste your time you will never grow up';
 
 function launchApp(packageName) {
-  const url = `intent://#Intent;package=${packageName};scheme=package;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;end`;
-  Linking.openURL(url).catch(() => {
-    ToastAndroid.show(`App not installed: ${packageName}`, ToastAndroid.SHORT);
+  IntentLauncher.startActivityAsync('android.intent.action.MAIN', {
+    packageName: packageName,
+    flags: 0x10200000, // FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+  }).catch(() => {
+    ToastAndroid.show(`Cannot open: ${packageName}`, ToastAndroid.SHORT);
   });
 }
 
